@@ -1,0 +1,49 @@
+# Base configuration for Brain Tumor Detection project
+project:
+  name: "AI-Based Brain Tumor Detection"
+  seed: 42
+  device: "auto"  # auto-detect GPU/CPU
+  mixed_precision: true
+  num_workers: 2
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  checkpoints: "checkpoints"
+  results: "results"
+  runs: "runs"  # TensorBoard logs
+
+datasets:
+  nickparvar:
+    kaggle_id: "masoudnickparvar/brain-tumor-mri-dataset"
+    raw_dir: "data/raw/nickparvar"
+    classes: ["glioma", "meningioma", "notumor", "pituitary"]
+    expected_count: 7023
+    image_size: 224
+    train_split: 0.7
+    val_split: 0.15
+    test_split: 0.15
+
+  brats2021:
+    kaggle_id: "dschettler8845/brats-2021-task1"
+    raw_dir: "data/raw/brats2021"
+    expected_count: 1251  # full dataset
+    subset_count: 200  # download subset due to disk constraints
+    image_size: 256
+    modalities: ["flair", "t1", "t1ce", "t2"]
+    primary_modality: "flair"
+    train_split: 0.8
+    val_split: 0.2
+
+  figshare:
+    article_id: 1512427
+    raw_dir: "data/raw/figshare"
+    processed_dir: "data/processed/figshare"
+    classes: ["meningioma", "glioma", "pituitary"]
+    expected_count: 3064
+
+  br35h:
+    kaggle_id: "ahmedhamada0/brain-tumor-detection"
+    raw_dir: "data/raw/br35h"
+    classes: ["yes", "no"]
+    expected_count: 3000  # approximate

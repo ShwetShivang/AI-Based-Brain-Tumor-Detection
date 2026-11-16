@@ -1,0 +1,31 @@
+# Vision Transformer Configuration (Phase 4)
+model:
+  name: "vit_base_patch16_224"
+  pretrained: true
+  num_classes: 4
+  dropout: 0.1
+
+training:
+  batch_size: 32
+  epochs: 25
+  learning_rate: 0.00005  # lower LR for ViT
+  weight_decay: 0.01
+  optimizer: "adamw"
+  scheduler: "cosine"
+  warmup_epochs: 3
+  early_stopping_patience: 7
+  checkpoint_every: 5
+  label_smoothing: 0.1
+  layer_decay: 0.65  # layer-wise LR decay
+
+augmentation:
+  train:
+    horizontal_flip: 0.5
+    rotation_limit: 15
+    brightness_limit: 0.2
+    contrast_limit: 0.2
+    random_erasing: 0.25
+    mixup_alpha: 0.2
+    normalize: true
+  val:
+    normalize: true

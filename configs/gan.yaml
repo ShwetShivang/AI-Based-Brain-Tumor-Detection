@@ -1,0 +1,18 @@
+# DCGAN Configuration (Phase 5)
+model:
+  latent_dim: 100
+  gen_features: 64
+  disc_features: 64
+  image_size: 64  # generate 64x64 images
+  channels: 3
+
+training:
+  batch_size: 64
+  epochs: 200
+  lr_generator: 0.0002
+  lr_discriminator: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+  checkpoint_every: 50
+  sample_every: 10  # save sample grid every N epochs
+  n_samples: 64  # samples per grid

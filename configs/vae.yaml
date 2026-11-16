@@ -1,0 +1,20 @@
+# VAE Configuration (Phase 5)
+model:
+  latent_dim: 128
+  image_size: 64
+  channels: 3
+  encoder_channels: [32, 64, 128, 256]
+  decoder_channels: [256, 128, 64, 32]
+
+training:
+  batch_size: 64
+  epochs: 100
+  learning_rate: 0.0003
+  kl_weight: 0.0001  # beta-VAE weight
+  kl_annealing: true
+  kl_annealing_epochs: 20
+  checkpoint_every: 25
+  sample_every: 10
+
+anomaly:
+  threshold_percentile: 95  # reconstruction error threshold

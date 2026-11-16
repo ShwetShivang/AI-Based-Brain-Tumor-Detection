@@ -1,0 +1,96 @@
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# ===========================
+# Virtual Environments
+# ===========================
+venv/
+env/
+.venv/
+ENV/
+
+# ===========================
+# IDE / Editor
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# ===========================
+# Data (large files, downloaded datasets)
+# ===========================
+data/raw/
+data/processed/
+*.nii
+*.nii.gz
+*.mat
+*.h5
+*.hdf5
+
+# ===========================
+# Model Checkpoints (large binary files)
+# ===========================
+checkpoints/*.pth
+checkpoints/*.pt
+checkpoints/*.ckpt
+checkpoints/*.bin
+
+# ===========================
+# TensorBoard Runs
+# ===========================
+runs/
+
+# ===========================
+# Results (regeneratable outputs)
+# ===========================
+results/phase0_samples/*.png
+results/phase1/
+results/phase2/
+results/phase3/
+results/phase4/
+results/phase5/
+results/phase6/
+results/phase7/
+
+# ===========================
+# Environment & Secrets
+# ===========================
+.env
+.env.local
+*.key
+kaggle.json
+
+# ===========================
+# Jupyter Notebooks
+# ===========================
+.ipynb_checkpoints/
+*.ipynb
+
+# ===========================
+# Logs
+# ===========================
+*.log
+logs/

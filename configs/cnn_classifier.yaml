@@ -1,0 +1,30 @@
+# CNN Classifier Configuration (Phase 1)
+model:
+  name: "efficientnet_b0"
+  pretrained: true
+  num_classes: 4
+  dropout: 0.3
+  freeze_backbone_epochs: 3  # freeze backbone for first N epochs
+
+training:
+  batch_size: 32
+  epochs: 25
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  optimizer: "adamw"
+  scheduler: "cosine"
+  warmup_epochs: 2
+  early_stopping_patience: 7
+  checkpoint_every: 5
+  gradient_clip_max_norm: 1.0
+
+augmentation:
+  train:
+    horizontal_flip: 0.5
+    vertical_flip: 0.0
+    rotation_limit: 15
+    brightness_limit: 0.2
+    contrast_limit: 0.2
+    normalize: true  # ImageNet stats
+  val:
+    normalize: true

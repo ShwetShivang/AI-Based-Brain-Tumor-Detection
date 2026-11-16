@@ -1,0 +1,35 @@
+# U-Net Segmentation Configuration (Phase 2)
+model:
+  encoder: "resnet34"
+  encoder_pretrained: true
+  in_channels: 1  # grayscale MRI slices
+  out_channels: 1  # binary segmentation (tumor / no tumor)
+  activation: null  # raw logits, apply sigmoid in loss
+
+training:
+  batch_size: 16
+  epochs: 30
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  optimizer: "adamw"
+  scheduler: "cosine"
+  warmup_epochs: 2
+  early_stopping_patience: 10
+  checkpoint_every: 5
+  loss: "dice_bce"  # combination of Dice + BCE
+  dice_weight: 0.5
+  bce_weight: 0.5
+
+augmentation:
+  train:
+    horizontal_flip: 0.5
+    vertical_flip: 0.5
+    rotation_limit: 20
+    elastic_transform: true
+    normalize: true
+  val:
+    normalize: true
+
+data:
+  slice_selection: "tumor_containing"  # only use slices that contain tumor
+  min_tumor_fraction: 0.001  # min fraction of tumor pixels in a slice
